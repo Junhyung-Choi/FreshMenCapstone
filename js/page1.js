@@ -8,7 +8,7 @@ new Chart(ctx, {
     datasets: [{
         data: data,
         // label: data,
-      borderWidth: 1
+      borderWidth: 2
     }]
   },
   options: {
