@@ -1,14 +1,13 @@
 const ctx = document.getElementById('myChart');
-const data = [2, 4, 6, 8, 10, 12];
+const ctx2 = document.getElementById('myChart2')
 
-new Chart(ctx, {
-  type: 'bar',
+function draw(dx) {
+  new Chart(ctx, {
+  type: 'polarArea',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['1st','2nd', '3rd','4th','5th','6th', '7th','8th','9th','10th'],
     datasets: [{
-        data: data,
-        // label: data,
-      borderWidth: 2
+      data: dx
     }]
   },
   options: {
@@ -18,4 +17,55 @@ new Chart(ctx, {
       }
     }
   }
-});
+  });
+}
+
+function draw2(dx) {
+  new Chart(ctx2, {
+  type: 'line',
+  data: {
+    labels: ['1st','2nd', '3rd','4th','5th','6th', '7th','8th','9th','10th'],
+    datasets: [{
+      data: dx
+    }],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(75, 192, 192)',
+      'rgb(255, 205, 86)',
+      'rgb(201, 203, 207)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 99, 132)',
+      'rgb(75, 192, 192)',
+      'rgb(255, 205, 86)',
+      'rgb(201, 203, 207)',
+      'rgb(54, 162, 235)'
+    ]
+    
+  },
+  options: {
+  }
+  });
+}
+
+function request() {
+  fetch('https://draxasapi.run.goorm.site/analysis/', {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      "Content-Type": "application/json"
+    },
+    redirect: 'follow'
+  })
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+    draw(data);
+    draw2(data);
+  });
+}
+
+
+request();
+
