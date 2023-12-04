@@ -1,22 +1,64 @@
-{/* <script type="text/javascript"> */ }
-google.charts.load('current', { 'packages': ['corechart'] });
-google.charts.setOnLoadCallback(drawChart);
+const ctx = document.getElementById('myChart1');
+const ctx2 = document.getElementById('myChart2');
 
-function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-        ['Year', 'Sales', 'Expenses'],
-        ['2013', 100, 400],
-        ['2014', 200, 460],
-        ['2015', 500, 1120],
-        ['2016', 300, 540]
-    ]);
+// const data = [2, 4, 6, 8, 10, 12];
+function draw(da) {
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['1', '2', '3', '4', '5', '6','7','8','9','10'],
+      datasets: [{
+        data: da,
+        // label: data,
+        borderWidth: 2
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+  new Chart(ctx2, {
+    type: 'polarArea',
+    data: {
+      labels:  ['1', '2', '3', '4', '5', '6','7','8','9','10'],
+      datasets: [{
+        data: da,
+        // label: data,
+        borderWidth: 2
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
 
-    var options = {
-        title: 'Company Performance',
-        hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
-        vAxis: { minValue: 0 }
-    };
 
-    var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-    chart.draw(data, options);
+
 }
+function request() {
+  fetch('https://draxasapi.run.goorm.site/analysis/', {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      "Content-Type": "application/json"
+    },
+    redirect: 'follow'
+  })
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      draw(data);
+    });
+}
+request();
+// draw();
