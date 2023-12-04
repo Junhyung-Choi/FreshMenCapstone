@@ -27,7 +27,7 @@ function draw()
 }
 
 function request() {
-  fetch('http://127.0.0.1:8000/categories/', {
+  fetch('https://draxasapi.run.goorm.site/analysis/', {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
