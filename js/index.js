@@ -1,21 +1,47 @@
 const ctx = document.getElementById('myChart');
 const data = [12, 19, 3, 5, 2, 3];
 
-new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-        data: data,
-        // label: data,
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
+let a = "a";
+
+function draw()
+{
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+          data: data,
+          label: a,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
       }
     }
-  }
-});
+  });
+
+}
+
+function request() {
+  fetch('http://127.0.0.1:8000/categories/', {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      "Content-Type": "application/json"
+    },
+    redirect: 'follow'
+  })
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+    // draw();
+  });
+}
+request();
+// draw();
