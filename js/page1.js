@@ -1,14 +1,14 @@
 const ctx = document.getElementById('myChart');
-const data = [2, 4, 6, 8, 10, 12];
+const data = [12, 19, 3, 14, 12, 8];
 
 new Chart(ctx, {
-  type: 'bar',
+  type: 'line',
   data: {
     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
     datasets: [{
         data: data,
         // label: data,
-      borderWidth: 2
+      borderWidth: 1
     }]
   },
   options: {
