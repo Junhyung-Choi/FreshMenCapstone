@@ -2,52 +2,27 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link type="text/css" rel="stylesheet" href="../css/style.css">
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link type="text/css" rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="../js/page3.js"></script>
 </head>
 
 <body>
-    <a href="page1.html">page1</a>
-    <a href="page2.html">page2</a>
-    <a href="page3.html">page3</a>
+  <a href="page1.html">page1</a>
+  <a href="page2.html">page2</a>
+  <a href="page3.html">page3</a>
 
-    <div>
-        <canvas id="myChart"></canvas>
-    </div>
+  <div>
+    <canvas id="myChart"></canvas>
+  </div>
 
 
-    <head>
-      <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-  
-        function drawChart() {
-          var data = google.visualization.arrayToDataTable([
-            ['Year', 'Sales', 'Expenses'],
-            ['2013',  100,      400],
-            ['2014',  200,      460],
-            ['2015',  500,       1120],
-            ['2016',  300,      540]
-          ]);
-  
-          var options = {
-            title: 'Company Performance',
-            hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
-            vAxis: {minValue: 0}
-          };
-  
-          var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-          chart.draw(data, options);
-        }
-      </script>
-    </head>
-      <div id="chart_div" style="width: 100%; height: 500px;"></div>
-  
-    <footer>kim young yeon</footer>
+  <div id="chart_div" style="width: 100%; height: 500px;"></div>
+
+  <footer>kim young yeon</footer>
 </body>
 
 </html>
